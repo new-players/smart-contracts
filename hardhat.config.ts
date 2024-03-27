@@ -87,6 +87,12 @@ module.exports = {
     networks: {
         hardhat: {
             chainId: 31337,
+            accounts: [
+                {
+                    balance: "100000000000000000000",
+                    privateKey: PRIVATE_KEY
+                }
+            ]
             // uncomment when forking is required
             // forking: {
             //     url: GOERLI_RPC_URL,

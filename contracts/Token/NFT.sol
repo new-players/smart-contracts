@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.20;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/extensions/AccessControlEnumerable.sol";
 import "../Helpers/Validator.sol";
 
@@ -10,17 +10,15 @@ import "../Helpers/Validator.sol";
 /// @notice This contract is a base NFT used for npc.institute
 /// @dev Implementation of an ERC721 token with role-based permission controls that integrates with ERC6551 for token-bound accounts
 
-contract NFT is ERC721, AccessControlEnumerable {
+contract NFT is ERC721Enumerable, AccessControlEnumerable {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
-
-    uint256 private nextTokenId;
     string public baseURI;
 
     /// @dev Error thrown when a token transfer is attempted but not allowed
     error TokenTransferNotAllowed();
 
     /// @dev Error thrown when more than one NFT is attempted to be minted for an address
-    error MoreThanOneNftNotAllowed();
+    // error MoreThanOneNftNotAllowed();
 
     /// @notice Constructor to create NFT contract
     /// @param _name The name of the ERC721 token
@@ -43,7 +41,7 @@ contract NFT is ERC721, AccessControlEnumerable {
     /// @return isSupported True if the contract supports the interface
     function supportsInterface(
         bytes4 _interfaceId
-    ) public view override(ERC721, AccessControlEnumerable) returns (bool isSupported) {
+    ) public view override(ERC721Enumerable, AccessControlEnumerable) returns (bool isSupported) {
         isSupported = super.supportsInterface(_interfaceId);
     }
 
@@ -62,11 +60,13 @@ contract NFT is ERC721, AccessControlEnumerable {
     /// @dev Can only be called by an account with the MINTER_ROLE
     /// @param _to The address to mint the NFT to
     function safeMint(address _to) external onlyRole(MINTER_ROLE) returns (uint256 tokenId) {
-        if (_checkExistingMint(_to)) {
-            revert MoreThanOneNftNotAllowed();
-        }
+        
+        
+        // if (_checkExistingMint(_to)) {
+        //     revert MoreThanOneNftNotAllowed();
+        // }
 
-        tokenId = nextTokenId++;
+        tokenId = totalSupply();
         _safeMint(_to, tokenId);
     }
 
