@@ -27,6 +27,13 @@ const FUJI_RPC_URL = process.env.FUJI_RPC_URL;
 const POLYGON_RPC_URL = process.env.POLYGON_RPC_URL;
 const ETHEREUM_RPC_URL = process.env.ETHEREUM_RPC_URL;
 const AVALANCHE_RPC_URL = process.env.AVALANCHE_RPC_URL;
+const OPTIMISM_SEPOLIA_RPC_URL = process.env.OPTIMISM_SEPOLIA_RPC_URL;
+
+const OPTIMISM_SEPOLIA_DEPLOYMENT_SETTINGS = {
+    url: OPTIMISM_SEPOLIA_RPC_URL,
+    accounts: PRIVATE_KEY && FACTORY_DEPLOYER_PRIVATE_KEY ? [PRIVATE_KEY, FACTORY_DEPLOYER_PRIVATE_KEY] : [],
+    chainId: 11155420
+};
 
 const GOERLI_DEPLOYMENT_SETTINGS = {
     url: GOERLI_RPC_URL,
@@ -109,7 +116,8 @@ module.exports = {
         polygon: POLYGON_DEPLOYMENT_SETTINGS,
         ethereum: ETHEREUM_DEPLOYMENT_SETTINGS,
         avalanche: AVALANCHE_DEPLOYMENT_SETTINGS,
-        fuji: FUJI_DEPLOYMENT_SETTINGS
+        fuji: FUJI_DEPLOYMENT_SETTINGS,
+        optimismSepolia: OPTIMISM_SEPOLIA_DEPLOYMENT_SETTINGS
     },
     defaultNetwork: "hardhat",
     etherscan: {
@@ -148,7 +156,8 @@ module.exports = {
             137: 0,
             1: 0,
             43114: 0,
-            43113: 0
+            43113: 0,
+            11155420: 0
         },
         factoryDeployer: {
             31337: 1,
@@ -158,7 +167,8 @@ module.exports = {
             137: 1,
             1: 1,
             43114: 1,
-            43113: 1
+            43113: 1,
+            11155420: 1
         }
     },
     mocha: {

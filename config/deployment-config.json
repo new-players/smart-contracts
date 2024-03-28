@@ -3,7 +3,17 @@
         "NFT": {
             "name": "yourNFT",
             "symbol": "YNFT",
-            "owner": "0xADfd46a631a80B73Bd780512CECc04cb33b98e3E"
+            "owner": "0xADfd46a631a80B73Bd780512CECc04cb33b98e3E",
+            "base_uri": "https://uri.npc.institute/"
+        }
+    },
+    "sepolia": {
+        "NFT": {
+            "name": "yourNFT",
+            "symbol": "YNFT",
+            "owner": "0xADfd46a631a80B73Bd780512CECc04cb33b98e3E",
+            "base_uri": "https://uri.npc.institute/"            
         }
     }
+
 }

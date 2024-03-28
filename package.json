@@ -18,7 +18,8 @@
     "deploy:fuji": "hardhat deploy --network fuji --tags fuji --tags-require-all",
     "deploy:polygon": "hardhat deploy --network polygon --tags polygon --tags-require-all",
     "deploy:ethereum": "hardhat deploy --network ethereum --tags ethereum --tags-require-all",
-    "deploy:avalanche": "hardhat deploy --network avalanche --tags avalanche --tags-require-all"
+    "deploy:avalanche": "hardhat deploy --network avalanche --tags avalanche --tags-require-all",
+    "deploy:optimismSepolia": "hardhat deploy --network optimismSepolia --tags optimismSepolia --tags-require-all"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
