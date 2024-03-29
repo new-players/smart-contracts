@@ -32,6 +32,11 @@ module.exports = async ({ deployments, getNamedAccounts }) => {
 
     log(`NFT (${network.name}) base uri is configured to: ${base_uri}`)
 
+    // mint 3 NFTs to the owner
+    for (let i = 0; i < 3; i++) {
+        const mintTx1 = await NFTContract.safeMint(owner);
+    }
+
     // Verify the contract on Etherscan for networks other than localhost
     if (network.config.chainId !== 31337) {
         await hre.run("verify:verify", {
